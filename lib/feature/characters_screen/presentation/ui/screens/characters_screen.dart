@@ -64,9 +64,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
       body: BlocBuilder<CharactersScreenBloc, CharactersScreenState>(
         builder: (context, state) {
           return state.when(
-            initial: () {
-              return const SizedBox.shrink();
-            },
+            initial: () => const SizedBox.shrink(),
             loading: () => LoadingPlaceholder(listType: listType),
             loaded: (data, count, isLoading) {
               return data.isNotEmpty
@@ -134,12 +132,14 @@ class _CharactersScreenState extends State<CharactersScreen> {
                     const SizedBox(height: 12),
                     Text(e),
                     TextButton(
-                        onPressed: () {
-                          controller.clear();
-                          context.read<CharactersScreenBloc>().add(
-                              const GetCharactersEvent(page: 1, query: ''));
-                        },
-                        child: Text('Поробовать снова'))
+                      onPressed: () {
+                        controller.clear();
+                        context
+                            .read<CharactersScreenBloc>()
+                            .add(const GetCharactersEvent(page: 1, query: ''));
+                      },
+                      child: const Text('Попробовать снова'),
+                    )
                   ],
                 ),
               );
@@ -181,9 +181,7 @@ class _CharactersListWidget extends StatelessWidget {
       child: ListView.builder(
         itemCount: list.length,
         itemBuilder: (context, index) {
-          return CharactersCard(
-            data: list[index],
-          );
+          return CharactersCard(data: list[index]);
         },
       ),
     );

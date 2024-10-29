@@ -72,9 +72,10 @@ class CharactersCard extends StatelessWidget {
                   child: Text(
                     data.status,
                     style: theme.typography.s10w400.copyWith(
-                        color: data.status == 'Dead'
-                            ? theme.colors.red
-                            : theme.colors.green),
+                      color: data.status == 'Dead'
+                          ? theme.colors.red
+                          : theme.colors.green,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -91,8 +92,9 @@ class CharactersCard extends StatelessWidget {
                   isEnabled: isPlaceholder,
                   child: Text(
                     '${data.species} ${data.gender}',
-                    style: theme.typography.s12w400
-                        .copyWith(color: theme.colors.grey),
+                    style: theme.typography.s12w400.copyWith(
+                      color: theme.colors.grey,
+                    ),
                   ),
                 )
               ],

@@ -4,7 +4,6 @@ import 'package:rick_and_morty/core/theme/app_theme_data.dart';
 import 'package:rick_and_morty/core/theme/theme_provider.dart';
 import 'package:rick_and_morty/feature/auth_screen/presentation/ui/feature.dart';
 import 'package:rick_and_morty/feature/init/dependencies_providers/dependensies_povider.dart';
-import 'package:rick_and_morty/feature/home_screen/screens/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

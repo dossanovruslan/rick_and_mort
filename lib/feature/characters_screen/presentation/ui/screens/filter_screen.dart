@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:group_button/group_button.dart';
 import 'package:provider/provider.dart';
 import 'package:rick_and_morty/feature/characters_screen/presentation/state/bloc/characters_screen_bloc.dart';
+import 'package:rick_and_morty/feature/characters_screen/presentation/ui/widgets/check_box_tile.dart';
 
 class FilterScreen extends StatefulWidget {
   final String? gender;
@@ -90,7 +91,8 @@ class _FilterScreenState extends State<FilterScreen> {
                 child: Padding(
                   padding: const EdgeInsets.only(right: 24),
                   child: SvgPicture.asset(
-                      'assets/svg_icons/remove_filter_icon.svg'),
+                    'assets/svg_icons/remove_filter_icon.svg',
+                  ),
                 ),
               )
           ],
@@ -108,7 +110,7 @@ class _FilterScreenState extends State<FilterScreen> {
               ),
               buttons: statusList,
               buttonIndexedBuilder: (selected, index, context) {
-                return _CheckBoxTile(
+                return CheckBoxTile(
                   title: statusList[index],
                   selected: selected,
                   onTap: () {
@@ -134,14 +136,13 @@ class _FilterScreenState extends State<FilterScreen> {
               ),
               buttons: genderList,
               buttonIndexedBuilder: (selected, index, context) {
-                return _CheckBoxTile(
+                return CheckBoxTile(
                   title: genderList[index],
                   selected: selected,
                   onTap: () {
                     if (!selected) {
                       _genderController.selectIndex(index);
                       gender = genderList[index];
-
                       setState(() {});
                     }
                   },
@@ -150,32 +151,6 @@ class _FilterScreenState extends State<FilterScreen> {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class _CheckBoxTile extends StatelessWidget {
-  const _CheckBoxTile({
-    required this.selected,
-    required this.onTap,
-    required this.title,
-  });
-
-  final String title;
-  final bool selected;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(title),
-      onTap: onTap,
-      leading: Checkbox(
-        value: selected,
-        onChanged: (val) {
-          onTap();
-        },
       ),
     );
   }
